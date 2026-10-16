@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="OrderManagement.Application/OrderManagement.Application.csproj" Id="81046436-1546-4bbe-9281-5ab4be691adb" />
+  <Project Path="OrderManagement.Domian/OrderManagement.Domian.csproj" Id="bbcc3a02-7e44-4b71-896a-2d3134b7a305" />
+  <Project Path="OrderManagement.Infrastructure/OrderManagement.Infrastructure.csproj" Id="b258095e-0469-4a57-8bbe-bb0df162faec" />
+  <Project Path="OrderManagement.WebAPI/OrderManagement.WebAPI.csproj" />
+</Solution>
