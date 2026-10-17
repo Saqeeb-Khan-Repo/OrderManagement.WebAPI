@@ -2,7 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using OrderManagement.Infrastructure.ConnectionFactory;
 using OrderManagement.Infrastructure.Repository;
-using OrderManagement.Application.RepositoryContracts;
+using OrderManagement.Application.Interface.RepositoryContracts;
 
 namespace OrderManagement.Infrastructure;
 

@@ -1,8 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using OrderManagement.Application.DTOs;
-using OrderManagement.Application.ServiceContracts;
-using OrderManagement.Domian.Entities;
+using OrderManagement.Application.DTOs.ProductDTOs;
+using OrderManagement.Application.Interface.ServiceContracts;
 
 namespace OrderManagement.WebAPI.Controllers;
 
@@ -60,7 +59,7 @@ public class ProductController : CustomController
 
     [Authorize(Roles = "Admin")]
     [HttpPost]
-    public async Task<IActionResult> CreateProduct(Product product)
+    public async Task<IActionResult> CreateProduct(ProductRequest product)
     {
         if (product == null)
         {
@@ -105,7 +104,7 @@ public class ProductController : CustomController
     }
     [Authorize(Roles = "Admin")]
     [HttpPut("{productID}")]
-    public async Task<IActionResult> UpdateProductByID([FromBody] Product product , Guid productID)
+    public async Task<IActionResult> UpdateProductByID([FromBody] ProductRequest product , Guid productID)
     {
        var updated = await _productService.UpdateProductAsync(productID, product);
 

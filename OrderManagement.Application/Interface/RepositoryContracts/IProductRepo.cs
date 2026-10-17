@@ -1,8 +1,8 @@
-﻿using OrderManagement.Application.DTOs;
+﻿using OrderManagement.Application.DTOs.ProductDTOs;
 using OrderManagement.Domian.Entities;
 
 
-namespace OrderManagement.Application.RepositoryContracts;
+namespace OrderManagement.Application.Interface.RepositoryContracts;
 //UpdateProductPrice
 public interface IProductRepo
 {

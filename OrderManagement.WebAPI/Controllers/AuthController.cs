@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using OrderManagement.Application.DTOs;
-using OrderManagement.Application.RepositoryContracts;
+using OrderManagement.Application.DTOs.AuthDTOs;
+using OrderManagement.Application.Interface.RepositoryContracts;
 using OrderManagement.Domian.Entities;
 namespace OrderManagement.WebAPI.Controllers
 {

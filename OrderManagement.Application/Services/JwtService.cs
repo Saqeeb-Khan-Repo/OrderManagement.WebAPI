@@ -1,8 +1,8 @@
 ﻿
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
-using OrderManagement.Application.DTOs;
-using OrderManagement.Application.RepositoryContracts;
+using OrderManagement.Application.DTOs.AuthDTOs;
+using OrderManagement.Application.Interface.RepositoryContracts;
 using OrderManagement.Domian.Entities;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;

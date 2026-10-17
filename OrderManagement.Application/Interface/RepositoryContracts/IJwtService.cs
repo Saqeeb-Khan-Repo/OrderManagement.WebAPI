@@ -1,7 +1,7 @@
-﻿using OrderManagement.Application.DTOs;
+﻿using OrderManagement.Application.DTOs.AuthDTOs;
 using OrderManagement.Domian.Entities;
 
-namespace OrderManagement.Application.RepositoryContracts;
+namespace OrderManagement.Application.Interface.RepositoryContracts;
 
 public interface IJwtService
 {

@@ -1,5 +1,5 @@
 ﻿using Dapper;
-using OrderManagement.Application.RepositoryContracts;
+using OrderManagement.Application.Interface.RepositoryContracts;
 using OrderManagement.Domian.Entities;
 using OrderManagement.Infrastructure.ConnectionFactory;
 
@@ -17,7 +17,7 @@ public class UserStore : IUserStore
 
     public async Task Register(User user)
     {
-        var connection = _ConnectionFactory.CreateConnection();
+        using var connection = _ConnectionFactory.CreateConnection();
 
         //insert the user into db
         await connection.ExecuteAsync("AddNewUsers",
@@ -35,7 +35,7 @@ public class UserStore : IUserStore
     public async Task<User?> CheckByEmailRepo(string email)
     {
         //CheckByEmail
-        var connection = _ConnectionFactory.CreateConnection();
+        using var connection = _ConnectionFactory.CreateConnection();
         var existingUser = await connection.QueryFirstOrDefaultAsync<User>
              ("GetByEmail",
              new { email },
@@ -47,7 +47,7 @@ public class UserStore : IUserStore
 
     public async Task<List<User>> GetAllUsersRepo()
     {
-        var connection = _ConnectionFactory.CreateConnection();
+        using var connection = _ConnectionFactory.CreateConnection();
         var listOfUsers = await connection.QueryAsync<User>(
              "GetAllUsers",
              commandType: System.Data.CommandType.StoredProcedure

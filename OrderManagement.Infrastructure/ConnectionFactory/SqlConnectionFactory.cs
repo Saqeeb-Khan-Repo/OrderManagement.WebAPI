@@ -1,5 +1,6 @@
 ﻿using Microsoft.Data.SqlClient;
 
+
 namespace OrderManagement.Infrastructure.ConnectionFactory;
 
 public class SqlConnectionFactory 
@@ -14,4 +15,6 @@ public class SqlConnectionFactory
     {
         return new SqlConnection(_connectionString);
     }
+
+   
 }

@@ -2,8 +2,8 @@
 using Dapper;
 using OrderManagement.Domian.Entities;
 using OrderManagement.Infrastructure.ConnectionFactory;
-using OrderManagement.Application.RepositoryContracts;
-using OrderManagement.Application.DTOs;
+using OrderManagement.Application.DTOs.ProductDTOs;
+using OrderManagement.Application.Interface.RepositoryContracts;
 
 namespace OrderManagement.Infrastructure.Repository;
 
@@ -17,7 +17,7 @@ public class ProductRepo : IProductRepo
 
     public async Task<List<Product>> GetAllProductsRepo()
     {
-        var connection = _ConnectionFactory.CreateConnection();
+      using  var connection = _ConnectionFactory.CreateConnection();
 
        IEnumerable<Product> products  = await connection.QueryAsync<Product>(
             "sp_GetAllProducts",
@@ -29,7 +29,7 @@ public class ProductRepo : IProductRepo
 
     public async Task<Product?> GetProductByIDRepo(Guid productId)
     {
-        var connection = _ConnectionFactory.CreateConnection();
+        using var connection = _ConnectionFactory.CreateConnection();
 
         return await connection.QueryFirstOrDefaultAsync<Product>(
               "sp_GetProductByID",
@@ -39,7 +39,7 @@ public class ProductRepo : IProductRepo
     }
     public async Task<Product> CreateProductRepo(Product product)
     {
-       var connection = _ConnectionFactory.CreateConnection();
+        using var connection = _ConnectionFactory.CreateConnection();
         await connection.ExecuteAsync(
             "CreateProduct",
             new {
@@ -58,7 +58,7 @@ public class ProductRepo : IProductRepo
 
     public async Task<bool> DeleteProductRepo(Guid productId)
     {
-        var connection = _ConnectionFactory.CreateConnection();
+        using var connection = _ConnectionFactory.CreateConnection();
         var rowsEffected =  await connection.QuerySingleOrDefaultAsync<int>(
             "DeleteProductByID",
             new {  ProductID = productId},
@@ -72,7 +72,7 @@ public class ProductRepo : IProductRepo
 
     public async Task<Product> UpdateProductRepo(Guid productId, Product product)
     {
-        var connection = _ConnectionFactory.CreateConnection();
+        using var connection = _ConnectionFactory.CreateConnection();
         await connection.ExecuteAsync(
             "UpdateProductByID",
             new {ProductID = productId,
@@ -90,9 +90,10 @@ public class ProductRepo : IProductRepo
 
     public async Task<Product> UpdateProductPriceRepo(Guid productId, UpdateProductPriceRequest request)
     {
-        var existingProduct = await GetProductByIDRepo(productId);
+         var existingProduct = await GetProductByIDRepo(productId);
 
-       var connection = _ConnectionFactory.CreateConnection();
+       using var connection = _ConnectionFactory.CreateConnection(); //Using: Automatically closes Db connection when task is over
+
        var product = await connection.ExecuteAsync(
             "UpdateProductPrice",
             new { productId, request.Price },
@@ -109,7 +110,7 @@ public class ProductRepo : IProductRepo
 
     public async Task<Product?> CheckForDuplicateProductByNameRepo(string name)
     {
-        var connection = _ConnectionFactory.CreateConnection();
+        using var connection = _ConnectionFactory.CreateConnection();
 
         Product? product = await connection.QueryFirstOrDefaultAsync<Product>("CheckForDuplicateProductByName",
             new {Name = name},

@@ -1,6 +1,4 @@
-﻿
-
-namespace OrderManagement.Application.DTOs
+﻿namespace OrderManagement.Application.DTOs.AuthDTOs
 {
     public class LoginRequest
     {

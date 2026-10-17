@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace OrderManagement.Application.DTOs
+namespace OrderManagement.Application.DTOs.ProductDTOs
 {
     public class UpdateProductPriceRequest
     {

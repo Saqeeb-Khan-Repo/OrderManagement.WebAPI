@@ -2,8 +2,8 @@
 
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using OrderManagement.Application.RepositoryContracts;
-using OrderManagement.Application.ServiceContracts;
+using OrderManagement.Application.Interface.RepositoryContracts;
+using OrderManagement.Application.Interface.ServiceContracts;
 using OrderManagement.Application.Services;
 
 namespace OrderManagement.Application;

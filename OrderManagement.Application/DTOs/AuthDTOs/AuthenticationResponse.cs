@@ -1,7 +1,6 @@
-﻿
-using OrderManagement.Domian.Entities;
+﻿using OrderManagement.Domian.Entities;
 
-namespace OrderManagement.Application.DTOs;
+namespace OrderManagement.Application.DTOs.AuthDTOs;
 
 public class AuthenticationResponse
 {
