@@ -6,7 +6,8 @@ namespace OrderManagement.Application.DTOs.CreateOrderDTOs;
 public sealed class CreateOrderRequest
 {
     [Required]
-    [Range(1,100,ErrorMessage = "Orders must between 1 to 100")]
+    [MinLength(1, ErrorMessage = "An order must contain at least one item.")]
+    [MaxLength(100, ErrorMessage = "An order cannot contain more than 100 items.")]
     public List<CreateOrderItemRequest> Items { get; set; } = [];
 
     [Required]

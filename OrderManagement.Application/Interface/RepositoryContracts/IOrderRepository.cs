@@ -1,11 +1,12 @@
 ﻿
 
+using OrderManagement.Application.DTOs.CreateOrderDTOs;
 using OrderManagement.Domian.Entities;
 using System.Data;
 
 namespace OrderManagement.Application.Interface.RepositoryContracts;
 
-public interface IOrderRepo
+public interface IOrderRepository
 {
     /// <summary>
     /// Create an order method
@@ -13,9 +14,9 @@ public interface IOrderRepo
     /// <param name="order"></param>
     /// <param name="transaction"></param>
     /// <returns>returns Order.OrderID </returns>
-    public Task<Guid> CreateOrder(Order order , IDbTransaction transaction);
+    public Task<Guid> CreateOrderRepo(Order order , IEnumerable<OrderItem> items);
 
-    public Task CreateOrderItemsAsync(
-        IEnumerable<OrderItem> items,
-        IDbTransaction transaction);
+    public Task<List<Order>> GetAllOrdersRepo();
+
+    public Task<bool> UpdateOrderStatusAndDateRepo(UpdateOrder order, Guid orderID);
 }

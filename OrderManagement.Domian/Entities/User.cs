@@ -10,4 +10,6 @@ public class User
     public string UserName { get; set; } = string.Empty;
 
     public string Role { get; set; } = "User";
+
+    public ICollection<Order> Orders { get; set; } = new List<Order>();
 }

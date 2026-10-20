@@ -6,7 +6,7 @@ namespace OrderManagement.Domian.Entities
     {
         public Guid OrderId { get; set; }
 
-        public Guid CustomerId { get; set; }
+        public Guid UserID { get; set; }
 
         public string Status { get; set; } = string.Empty;
 
@@ -18,9 +18,9 @@ namespace OrderManagement.Domian.Entities
 
         public DateTime CreatedAt { get; set; }
 
-        public DateTime UpdatedAt { get; set; }
+        public DateTime? UpdatedAt { get; set; }
 
-        public Customer Customer { get; set; } = null!;
+        public User User { get; set; } = null!;
 
         public ICollection<OrderItem> OrderItems { get; set; } = new List<OrderItem>();
     }

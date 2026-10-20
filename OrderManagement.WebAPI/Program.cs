@@ -72,7 +72,7 @@ namespace OrderManagement.WebAPI
             }
 
             //exception handling middleware globaly
-            //app.UseExceptionHandling();
+            app.UseExceptionHandling();
 
             //https
             app.UseHttpsRedirection();
